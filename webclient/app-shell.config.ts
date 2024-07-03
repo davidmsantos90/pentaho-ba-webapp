@@ -4,6 +4,10 @@ export default (): HvAppShellConfig => ({
   name: "Pentaho App Shell",
   baseUrl: "/app-shell/",
 
+  apps: {
+    "@hv-apps/app-shell-home": "http://localhost:8080/pentaho/content/app-shell-home/webclient/",
+  },
+
   header: {
     actions: [
       {
@@ -19,5 +23,20 @@ export default (): HvAppShellConfig => ({
     ]
   },
 
-  navigationMode: "ONLY_LEFT",
+  menu: [
+    {
+      label: "Home",
+      target: "/"
+    }
+  ],
+
+  mainPanel: {
+    maxWidth: "xl",
+    views: [{
+      bundle: "@hv-apps/app-shell-home/pages/Home.js",
+      route: "/",
+    },]
+  },
+
+  navigationMode: "ONLY_LEFT"
 });
