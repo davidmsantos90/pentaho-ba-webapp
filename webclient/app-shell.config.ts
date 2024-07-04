@@ -1,11 +1,14 @@
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
+import type { AppShellVitePluginOptions, HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
 
-export default (): HvAppShellConfig => ({
+export default (
+  _opts: AppShellVitePluginOptions,
+  env: Record<string, string>
+): HvAppShellConfig => ({
   name: "Pentaho App Shell",
-  baseUrl: "/app-shell/",
+  baseUrl: env.VITE_BASE_URL || "/app-shell/",
 
   apps: {
-    "@hv-apps/app-shell-home": "http://localhost:8080/pentaho/content/app-shell-home/webclient/",
+    "@hv-apps/app-shell-home": env.VITE_HOME || "http://localhost:8080/pentaho/content/app-shell-home/webclient/",
   },
 
   header: {
